@@ -1,3 +1,5 @@
 Config = {}
 
-Config.DefaultKey = "b"
+Config.DefaultKey = "B"
+
+Config.DefaultCommand = "cashbank"
