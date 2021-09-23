@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterCommand("cashbank", function()
+RegisterCommand(Config.DefaultCommand, function()
     if not ESX.IsPlayerLoaded() then return end
 
     if not isShowing then
@@ -34,4 +34,9 @@ end, false)
 
 
 
-RegisterKeyMapping('cashbank', 'Show cash and bank', 'keyboard', Config.DefaultKey)
+RegisterKeyMapping(Config.DefaultCommand, 'Show cash and bank', 'keyboard', Config.DefaultKey)
+
+RegisterNetEvent('esx:setAccountMoney')
+AddEventHandler('esx:setAccountMoney', function(account)
+	ExecuteCommand(Config.DefaultCommand)
+end)
