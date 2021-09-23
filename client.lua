@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterCommand(Config.DefaultCommand, function()
+local UpdateHUD = function()
     if not ESX.IsPlayerLoaded() then return end
 
     if not isShowing then
@@ -30,13 +30,9 @@ RegisterCommand(Config.DefaultCommand, function()
             end
         end)
     end
-end, false)
-
-
-
-RegisterKeyMapping(Config.DefaultCommand, 'Show cash and bank', 'keyboard', Config.DefaultKey)
+end
 
 RegisterNetEvent('esx:setAccountMoney')
 AddEventHandler('esx:setAccountMoney', function(account)
-	ExecuteCommand(Config.DefaultCommand)
+	UpdateHUD()
 end)
